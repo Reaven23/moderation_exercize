@@ -25,8 +25,12 @@
     <div class="text-center mb-3 mt-2">
      <h1>Comment section</h1></div>
       <%= simple_form_for [@post, @comment] do |f| %>
+      <div class="form-inputs-login">
         <%= f.input :content, as: :text, placeholder: "Write your comment here", label: false, class: "rounded" %>
-        <%= f.submit class: 'btn-add btn-light' %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Publish", class: 'btn-add btn-light' %>
+      </div>
       <% end %>
 
       <div class="comments mt-3 pb-1">

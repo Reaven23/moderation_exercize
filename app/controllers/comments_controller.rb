@@ -5,13 +5,18 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
 
-    if @comment.save
-      redirect_to post_path(@post), notice: "Comment duly saved"
+    if user_signed_in?
+      if @comment.save
+        redirect_to post_path(@post), notice: "Comment duly saved"
+      else
+        render 'posts/show', status: :unprocessable_entity
+      end
     else
-      render 'posts/show', status: :unprocessable_entity
+      redirect_to new_user_session_path
     end
   end
 
+  
   private
 
   def params_comment

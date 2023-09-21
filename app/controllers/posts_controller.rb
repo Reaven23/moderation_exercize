@@ -8,4 +8,10 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = Comment.all
   end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:content, :url, :photo, title)
+  end
 end

@@ -1,4 +1,11 @@
 <div class="banner">
+ <div class="container pt-6 text-end">
+    <% if user_signed_in? %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-light mt-3"%>
+    <% else %>
+      <a class="btn btn-light mt-3" href="/users/sign_in">Log in</a>
+    <% end %>
+  </div>
   <div class="container">
     <h1 class="text-white pt-3">PostFree</h1>
     <p class="text-white">Where true and relevant information is made.</p>
@@ -28,17 +35,15 @@
       <div class="form-inputs-login">
         <%= f.input :content, as: :text, placeholder: "Write your comment here", label: false, class: "rounded" %>
       </div>
-      <div class="form-actions">
+      <div class="form-actions ">
         <%= f.submit "Publish", class: 'btn-add btn-light' %>
       </div>
       <% end %>
 
-      <div class="comments mt-3 pb-1">
+      <div class="comments mt-3 pb-1 mb-3">
         <ul class="list-unstyled">
           <% @post.comments.each do |comment| %>
-
               <li class="ms-2 me-2 pt-2 pb-2 mb-2 bg-comment"><span class="font-weight-bold font-italic"><%= comment.user.nickname%></span>, <%=comment.content %></li>
-
           <% end %>
         </ul>
       </div>

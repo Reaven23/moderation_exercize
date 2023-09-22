@@ -1,0 +1,40 @@
+<div class="banner">
+  <div class="container">
+    <h1 class="text-white pt-3">PostFree</h1>
+    <p class="text-white">Where true and relevant information is made.</p>
+    <%= link_to posts_path do %>
+    <div class="btn btn-light mt-3">Back to the list of posts</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col bgcolor m-3">
+      <div class="text-center mb-3 mt-2">
+        <h1><%= @post.title %></h1>
+      </div>
+      <div class="text-justify box-link">
+        <div class="background_text">
+          <%= @post.content %>
+        </div>
+      </div>
+      <div class="text-end mt-3">@copyright - Authored by <%= @post.user.nickname %></div>
+    </div>
+    <div class="col bgcolor m-3">
+    <div class="text-center mb-3 mt-2"><p>Comments section</p></div>
+      <%= simple_form_for [@post, @comment] do |f| %>
+        <%= f.input :content, as: :text, placeholder: "Write your comment here", label: false %>
+        <%= f.submit class: 'btn-add btn-flat' %>
+      <% end %>
+
+      <div class="comments">
+        <ul>
+          <% @post.comments.each do |comment| %>
+            <li><%= comment.content %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

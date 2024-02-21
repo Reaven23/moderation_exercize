@@ -15,7 +15,7 @@ module Moderable
 
 
     result = JSON.parse(response.body)
-    self.is_accepted = true if result["prediction"]["0"] < 0.8
+    self.is_accepted = true if result["prediction"]["0"] <= 0.1669644832611084
 
 
     throw(:abort) unless is_accepted

@@ -6,6 +6,5 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
-  after_create :moderate_content
 
 end

@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
       if @comment.save
         redirect_to post_path(@post), notice: "Comment duly saved"
       else
+        flash[:comment_content] = @comment.content
         render 'posts/show', status: :unprocessable_entity
       end
     else

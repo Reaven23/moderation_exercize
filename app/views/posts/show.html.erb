@@ -1,3 +1,4 @@
+
 <div class="banner">
   <div class="container pt-6 text-end">
     <% if user_signed_in? %>
@@ -42,7 +43,7 @@
 
         <% if @comment.errors.any? %>
           <div class="alert alert-danger mt-3">
-            <h4><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h4>
+            <h4><%= pluralize(@comment.errors.count, "Error:") %> Your comment was not accepted</h4>
             <ul>
               <% @comment.errors.full_messages.each do |message| %>
                 <li><%= message %></li>

@@ -23,8 +23,7 @@ module Moderable
     self.is_accepted = true if result["prediction"]["0"] <= 0.1669644832611084
 
 
-    # throw(:abort) unless is_accepted == true
-    errors.add(:content, "Comment content is not accepted.") unless is_accepted
+    errors.add(:content, "Your comment content is considered to be offensive") unless is_accepted
   end
 
 end
